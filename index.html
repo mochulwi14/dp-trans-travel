@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dp Trans — Coastal Blue Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#181818',
+                            100: '#252525',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            900: '#09090b',
+                        },
+                        accent: {
+                            500: '#facc15',
+                            600: '#eab308',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(18, 18, 18, 0.94);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Existing base styles; alternate Forest & Sand edition below. */
+        body { background-color: #101010 !important; color: #f4f4f4 !important; font-size: 15px; line-height: 1.65; }
+        p { line-height: 1.75; }
+        h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.025em; }
+        a, button { -webkit-tap-highlight-color: transparent; }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #facc15 !important; outline-offset: 3px; }
+        [class~="bg-white"] { background-color: #191919 !important; }
+        [class~="bg-slate-50"] { background-color: #101010 !important; }
+        [class~="bg-slate-100"] { background-color: #202020 !important; }
+        [class~="bg-slate-200"] { background-color: #292929 !important; }
+        [class~="text-slate-900"], [class~="text-slate-800"] { color: #f5f5f5 !important; }
+        [class~="text-slate-700"], [class~="text-slate-600"] { color: #c4c4c4 !important; }
+        [class~="text-slate-500"], [class~="text-slate-400"] { color: #969696 !important; }
+        [class~="text-brand-400"], [class~="text-brand-600"], [class~="text-brand-700"], [class~="text-brand-800"] { color: #facc15 !important; }
+        [class~="text-accent-500"], [class~="text-accent-600"] { color: #facc15 !important; }
+        [class~="border-slate-100"], [class~="border-slate-200"], [class~="border-slate-300"] { border-color: #353535 !important; }
+        [class~="bg-brand-50"] { background-color: #25200d !important; }
+        [class~="bg-brand-100"] { background-color: #332a0d !important; }
+        [class~="bg-brand-500"], [class~="bg-brand-600"], [class~="bg-accent-500"], [class~="bg-accent-600"] { background-color: #facc15 !important; color: #111 !important; }
+        [class~="hover:bg-brand-700"]:hover { background-color: #eab308 !important; }
+        [class~="hover:bg-accent-600"]:hover { background-color: #eab308 !important; }
+        [class~="bg-emerald-100"] { background-color: #29230d !important; }
+        [class~="text-emerald-800"] { color: #facc15 !important; }
+        [class~="bg-amber-400"] { background-color: #facc15 !important; }
+        [class~="hover:bg-amber-300"]:hover { background-color: #eab308 !important; }
+        .shadow-brand-500\/30, .shadow-accent-500\/20 { --tw-shadow-color: rgb(250 204 21 / 0.16) !important; }
+        .brand-logo-crop { display: block; overflow: hidden; flex: 0 0 auto; }
+        .brand-logo-crop img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .brand-logo-header { width: 154px; height: 76px; }
+        .brand-logo-footer { width: 205px; height: 106px; }
+        #carList > div { background: #191919 !important; border-color: #353535 !important; }
+        #carList > div:hover { border-color: #facc15 !important; transform: translateY(-4px); }
+        #carList > div > div > div:first-child { background: #222 !important; }
+        #calcForm input, #calcForm select { line-height: 1.5; }
+        #calcForm select option { background: #191919; color: #f4f4f4; }
+        #calcForm label { font-size: 12px; letter-spacing: .035em; }
+        #resTotalPrice { color: #facc15 !important; }
+        .car-photo { position: relative; width: 100%; height: 15rem; overflow: hidden; border-radius: 1rem; margin-bottom: 1.25rem; background: #f2f2ef; }
+        .car-photo img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; padding: .5rem; transition: transform .25s ease; }
+        #carList > div:hover .car-photo img { transform: scale(1.02); }
+        #carList > div > div > .car-photo.has-cutout { background: radial-gradient(ellipse at 50% 78%, #383838 0%, #242424 55%, #171717 100%) !important; }
+        .car-photo.has-cutout img { object-fit: contain; padding: .8rem; }
+        #carList > div:hover .car-photo.has-cutout img { transform: none; }
+        .photo-credit { position: absolute; left: .55rem; bottom: .55rem; display: flex; gap: .25rem; align-items: center; border-radius: 999px; background: rgb(0 0 0 / .74); color: #fff !important; padding: .25rem .5rem; font-size: 9px; line-height: 1.25; }
+        .photo-credit a { color: #fff !important; text-decoration: underline; text-underline-offset: 2px; }
+        @media (max-width: 640px) {
+            .brand-logo-header { width: 132px; height: 68px; }
+            body { font-size: 14px; }
+            section.py-20 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+            #carList { gap: 1rem; }
+            #carList > div { padding: 1.1rem; }
+            .car-photo { height: 13rem; margin-bottom: 1.1rem; }
+            #kalkulator .grid { gap: 2rem; }
+            #kalkulator .bg-slate-800 { padding: 1.1rem; }
+            #resTotalPrice { font-size: 1.25rem; }
+        }
+        @media (min-width: 1024px) {
+            #carList { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            #carList > .hiace-card:nth-last-child(2) { grid-column: 1; grid-row: 4; }
+            #carList > .hiace-card:last-child { grid-column: 2; grid-row: 4; }
+        }
+    
+
+        /* Forest & Sand — alternate editorial theme */
+        :root { --forest: #183d35; --forest-deep: #102b26; --sage: #dce8dd; --sand: #f5f1e8; --paper: #fffdf8; --clay: #c16b4b; --ink: #24332e; --muted: #65736c; }
+        body { background: var(--sand) !important; color: var(--ink) !important; font-family: Georgia, 'Times New Roman', serif !important; }
+        p, nav, button, input, select, label, .photo-credit, .font-sans { font-family: Arial, sans-serif !important; }
+        h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif !important; letter-spacing: -.035em; }
+        [class~="bg-white"], .glass-card { background-color: var(--paper) !important; }
+        .glass-card { background: rgba(255,253,248,.94) !important; backdrop-filter: blur(14px); }
+        [class~="bg-slate-50"] { background-color: var(--sand) !important; }
+        [class~="bg-slate-100"] { background-color: #ede8dc !important; }
+        [class~="bg-slate-200"] { background-color: #e2ded3 !important; }
+        [class~="text-slate-900"], [class~="text-slate-800"] { color: var(--ink) !important; }
+        [class~="text-slate-700"], [class~="text-slate-600"] { color: #53645b !important; }
+        [class~="text-slate-500"], [class~="text-slate-400"] { color: var(--muted) !important; }
+        [class~="text-brand-400"], [class~="text-brand-600"], [class~="text-brand-700"], [class~="text-brand-800"] { color: var(--forest) !important; }
+        [class~="text-accent-400"], [class~="text-accent-500"], [class~="text-accent-600"], [class~="text-amber-400"], [class~="text-amber-300"] { color: var(--clay) !important; }
+        [class~="border-slate-100"], [class~="border-slate-200"], [class~="border-slate-300"] { border-color: #ded9cc !important; }
+        [class~="bg-brand-50"], [class~="bg-brand-100"], [class~="bg-emerald-100"] { background-color: var(--sage) !important; }
+        [class~="bg-brand-500"], [class~="bg-brand-600"], [class~="bg-brand-700"], [class~="bg-brand-800"], [class~="bg-brand-900"], [class~="bg-accent-500"], [class~="bg-accent-600"] { background-color: var(--forest) !important; color: #fffdf8 !important; }
+        [class~="bg-amber-400"] { background-color: var(--clay) !important; color: white !important; }
+        [class~="hover:bg-brand-700"]:hover, [class~="hover:bg-accent-600"]:hover { background-color: var(--forest-deep) !important; }
+        [class~="hover:bg-amber-300"]:hover { background-color: #a9573c !important; }
+        .shadow-brand-500\/30, .shadow-accent-500\/20 { --tw-shadow-color: rgb(24 61 53 / .16) !important; }
+        #beranda { background: linear-gradient(145deg, #e3ebdf 0%, #f5f1e8 52%, #fffdf8 100%) !important; }
+        #beranda h1 { font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 1.03; }
+        #travel { background: var(--forest-deep) !important; }
+        #travel .bg-white\/10 { background-color: rgb(255 255 255 / .08) !important; }
+        #kalkulator { background: #e7ede5 !important; color: var(--ink) !important; }
+        #kalkulator .text-white { color: var(--ink) !important; }
+        #kalkulator .bg-slate-800 { background: var(--paper) !important; border-color: #ded9cc !important; }
+        #kalkulator .bg-slate-900, #kalkulator .bg-slate-900\/90 { background: #f1eee5 !important; }
+        #kalkulator input, #kalkulator select { background: #fffdf8 !important; color: var(--ink) !important; border-color: #d8d4c8 !important; }
+        #kalkulator select option { background: #fffdf8; color: var(--ink); }
+        #calcForm select option { background: #fffdf8; color: var(--ink); }
+        #carList > div { background: var(--paper) !important; border-color: #e2ded3 !important; border-radius: 1.35rem; box-shadow: 0 10px 30px rgb(44 57 47 / .07); }
+        #carList > div:hover { border-color: #9ab5a1 !important; transform: translateY(-5px); }
+        #carList > div > div > div:first-child { background: #edf1e9 !important; }
+        .car-photo { background: #f0eee5 !important; border-radius: 1.1rem; }
+        #carList > div > div > .car-photo.has-cutout { background: radial-gradient(ellipse at 50% 78%, #dce7dc 0%, #e9eee5 60%, #f2f1e9 100%) !important; }
+        .brand-logo-header { width: 148px; height: 72px; }
+        .brand-logo-footer { width: 190px; height: 98px; }
+        footer { background: var(--forest-deep) !important; border-color: #31534a !important; }
+        footer .text-slate-900, footer .text-slate-800 { color: #fffdf8 !important; }
+        footer .text-slate-700, footer .text-slate-600, footer .text-slate-500, footer .text-slate-400 { color: #c4d0c7 !important; }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline-color: var(--clay) !important; }
+        @media (max-width: 640px) { #beranda h1 { font-size: 2.55rem; } }
+
+    
+        /* Coastal Blue — bold, contemporary service theme */
+        :root { --navy:#102a43; --blue:#147d92; --ice:#eaf4f6; --coral:#f08b62; --white:#fbfdfe; --slate:#31465a; }
+        body { background:#f3f7f8 !important; color:var(--slate) !important; font-family:'Plus Jakarta Sans',Arial,sans-serif !important; }
+        p, nav, button, input, select, label { font-family:'Plus Jakarta Sans',Arial,sans-serif !important; }
+        h1,h2,h3,h4 { font-family:'Plus Jakarta Sans',Arial,sans-serif !important; letter-spacing:-.035em; }
+        [class~="bg-white"], .glass-card { background-color:var(--white) !important; }
+        .glass-card { background:rgb(251 253 254 / .96) !important; backdrop-filter:blur(14px); }
+        [class~="bg-slate-50"] { background-color:#f3f7f8 !important; }
+        [class~="bg-slate-100"] { background-color:#e8f0f2 !important; }
+        [class~="bg-slate-200"] { background-color:#dce7e9 !important; }
+        [class~="text-slate-900"], [class~="text-slate-800"] { color:var(--navy) !important; }
+        [class~="text-slate-700"], [class~="text-slate-600"] { color:#496174 !important; }
+        [class~="text-slate-500"], [class~="text-slate-400"] { color:#738695 !important; }
+        [class~="text-brand-400"], [class~="text-brand-600"], [class~="text-brand-700"], [class~="text-brand-800"] { color:var(--blue) !important; }
+        [class~="text-accent-400"], [class~="text-accent-500"], [class~="text-accent-600"], [class~="text-amber-400"], [class~="text-amber-300"] { color:var(--coral) !important; }
+        [class~="border-slate-100"], [class~="border-slate-200"], [class~="border-slate-300"] { border-color:#d9e5e8 !important; }
+        [class~="bg-brand-50"], [class~="bg-brand-100"], [class~="bg-emerald-100"] { background-color:var(--ice) !important; }
+        [class~="bg-brand-500"], [class~="bg-brand-600"], [class~="bg-brand-700"], [class~="bg-brand-800"], [class~="bg-brand-900"] { background-color:var(--navy) !important; color:var(--white) !important; }
+        [class~="bg-accent-500"], [class~="bg-accent-600"], [class~="bg-amber-400"] { background-color:var(--blue) !important; color:white !important; }
+        [class~="hover:bg-brand-700"]:hover { background-color:#0b2034 !important; }
+        [class~="hover:bg-accent-600"]:hover, [class~="hover:bg-amber-300"]:hover { background-color:#0f6474 !important; }
+        #beranda { background:linear-gradient(135deg,#e4f1f3 0%,#f8fbfb 60%,#fff 100%) !important; }
+        #beranda h1 { font-size:clamp(2.65rem,5vw,4.65rem); line-height:1.04; }
+        #beranda .bg-white { box-shadow:0 24px 64px rgb(16 42 67 / .12) !important; border-color:#dce9eb !important; }
+        #travel { background:linear-gradient(110deg,#102a43,#147d92) !important; }
+        #travel .bg-white\/10 { background-color:rgb(255 255 255 / .1) !important; }
+        #kalkulator { background:#e8f0f2 !important; color:var(--navy) !important; }
+        #kalkulator .text-white { color:var(--navy) !important; }
+        #kalkulator .bg-slate-800 { background:var(--white) !important; border-color:#d9e5e8 !important; }
+        #kalkulator .bg-slate-900, #kalkulator .bg-slate-900\/90 { background:#f0f6f7 !important; }
+        #kalkulator input, #kalkulator select { background:#fff !important; color:var(--navy) !important; border-color:#cedde1 !important; }
+        #kalkulator select option { background:#fff; color:var(--navy); }
+        #carList > div { background:var(--white) !important; border-color:#dce7e9 !important; border-radius:1.5rem; box-shadow:0 12px 32px rgb(16 42 67 / .08); }
+        #carList > div:hover { border-color:#80bec8 !important; transform:translateY(-5px); }
+        #carList > div > div > div:first-child { background:#edf5f6 !important; }
+        .car-photo { background:#edf5f6 !important; border-radius:1.2rem; }
+        #carList > div > div > .car-photo.has-cutout { background:radial-gradient(ellipse at 50% 78%,#d8e9eb 0%,#e8f1f2 58%,#f0f6f6 100%) !important; }
+        .brand-logo-crop { overflow:visible; display:flex; align-items:center; justify-content:center; flex:0 0 auto; border-radius:14px; background:var(--navy); padding:4px 9px; }
+        .brand-logo-crop img { width:100%; height:100%; object-fit:contain !important; }
+        .brand-logo-header { width:174px; height:88px; }
+        .brand-logo-footer { width:206px; height:106px; background:#17364f; }
+        header .h-20 { height:96px; }
+        footer { background:#102a43 !important; border-color:#29445c !important; }
+        footer .text-slate-900, footer .text-slate-800 { color:#fff !important; }
+        footer .text-slate-700, footer .text-slate-600, footer .text-slate-500, footer .text-slate-400 { color:#bed0dc !important; }
+        a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { outline-color:var(--coral) !important; }
+        @media(max-width:640px){#beranda h1{font-size:2.5rem}.brand-logo-header{width:150px;height:78px}header .h-20{height:84px}}
+
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-semibold tracking-wide shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-brand-900 animate-pulse">
+                <i class="fa-regular fa-clock mr-1"></i> SETIAP HARI
+            </span>
+            <span>Travel Blitar ⇄ Surabaya tersedia setiap hari.</span>
+            <a href="https://wa.me/6285790850329?text=Halo%20dp%20Trans,%20saya%20mau%20pesan%20tiket%20Travel%20Blitar%20Surabaya" target="_blank" class="underline hover:text-amber-300 transition-colors ml-1 font-bold">
+                Pesan Tiket <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-card border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#beranda" class="brand-logo-crop brand-logo-header" aria-label="dp Trans, beranda">
+                    <img src="dp-trans-logo-trim.png" alt="dp Trans — Tour Travel & Car Rental">
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center space-x-8 font-semibold text-slate-600 text-sm">
+                    <a href="#beranda" class="hover:text-brand-600 transition-colors">Beranda</a>
+                    <a href="#armada" class="hover:text-brand-600 transition-colors">Armada</a>
+                    <a href="#travel" class="hover:text-brand-600 transition-colors">Travel Reguler</a>
+                    <a href="#kalkulator" class="hover:text-brand-600 transition-colors">Hitung Biaya</a>
+                    <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Keunggulan</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="https://wa.me/6285790850329?text=Halo%20dp%20Trans,%20saya%20ingin%20tanya%20sewa%20mobil/travel" target="_blank" class="flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-lg shadow-accent-500/20 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>0857-9085-0329</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-slate-600 hover:text-slate-900 p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 font-semibold text-slate-700 shadow-xl">
+            <a href="#beranda" class="block py-2 hover:text-brand-600">Beranda</a>
+            <a href="#armada" class="block py-2 hover:text-brand-600">Daftar Mobil</a>
+            <a href="#travel" class="block py-2 hover:text-brand-600">Travel Reguler</a>
+                    <a href="#kalkulator" class="block py-2 hover:text-brand-600">Hitung Biaya</a>
+            <a href="#keunggulan" class="block py-2 hover:text-brand-600">Keunggulan</a>
+            <a href="https://wa.me/6285790850329" target="_blank" class="flex items-center justify-center gap-2 bg-accent-500 text-white font-bold py-3 rounded-xl shadow-md w-full mt-4">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Hubungi 0857-9085-0329</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-brand-50 via-white to-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold">
+                        <i class="fa-solid fa-shield-halved"></i> Rental mobil & travel terpercaya
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                        Sewa Mobil dan Travel, Lebih Nyaman Bersama <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-800">dp Trans</span>
+                    </h1>
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-medium">
+                        Sewa mobil harian untuk keluarga, bisnis, dan perjalanan luar kota. Tersedia juga travel Blitar ⇄ Surabaya setiap hari.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#kalkulator" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-600/30 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calculator"></i> Hitung perkiraan biaya
+                        </a>
+                        <a href="#armada" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-bold px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-car"></i> Lihat harga armada
+                        </a>
+                    </div>
+
+                    <!-- Quick Badge Info -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl font-extrabold text-slate-900">10+</p>
+                            <p class="text-xs text-slate-500 font-medium">Pilihan mobil</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-slate-900">24/7</p>
+                            <p class="text-xs text-slate-500 font-medium">Siap melayani</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-slate-900">100%</p>
+                            <p class="text-xs text-slate-500 font-medium">Pengemudi ramah</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Decorative Blob -->
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-500/20 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-accent-500/20 rounded-full blur-3xl"></div>
+                        
+                        <div class="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 space-y-6">
+                            <div class="flex items-center justify-between border-b pb-4">
+                                <span class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i class="fa-solid fa-van-shuttle text-brand-600"></i> Rute Populer Harian
+                                </span>
+                                <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full">Berangkat Tiap Hari</span>
+                            </div>
+                            
+                            <!-- Card Content -->
+                            <div class="bg-slate-50 p-4 rounded-2xl space-y-3 border border-slate-200/60">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-bold uppercase">RUTE KOTA</p>
+                                        <p class="font-black text-slate-800 text-lg">BLITAR ⇄ SURABAYA</p>
+                                    </div>
+                                    <span class="w-10 h-10 bg-brand-50 text-brand-600 rounded-full flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                                    </span>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-1 pt-2 border-t border-slate-200">
+                                    <p><i class="fa-solid fa-check text-accent-500 mr-1.5"></i> Penjemputan Door to Door</p>
+                                    <p><i class="fa-solid fa-check text-accent-500 mr-1.5"></i> Rute via tol dan pengemudi berpengalaman</p>
+                                    <p><i class="fa-solid fa-check text-accent-500 mr-1.5"></i> Melayani Drop Bandara Juanda / Stasiun</p>
+                                </div>
+                            </div>
+
+                            <a href="https://wa.me/6285790850329?text=Halo%20dp%20Trans,%20saya%20mau%20pesan%20Travel%20Blitar%20Surabaya" target="_blank" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-bold py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-center">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Tanya jadwal travel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Announcement Banner -->
+    <section id="travel" class="py-12 bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/20 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2 space-y-4">
+                        <span class="inline-block bg-amber-400 text-slate-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                            Travel reguler
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-black">Travel Blitar ⇄ Surabaya</h2>
+                        <p class="text-slate-200 font-medium">
+                            Berangkat setiap hari dengan layanan antar jemput ke alamat tujuan di Blitar dan Surabaya, termasuk Bandara Juanda dan Pelabuhan Tanjung Perak.
+                        </p>
+                        <div class="flex flex-wrap gap-4 text-sm font-semibold pt-2">
+                            <span class="bg-white/20 px-3 py-1.5 rounded-lg"><i class="fa-regular fa-clock mr-1 text-amber-300"></i> Berangkat Setiap Hari</span>
+                            <span class="bg-white/20 px-3 py-1.5 rounded-lg"><i class="fa-solid fa-couch mr-1 text-amber-300"></i> Kursi nyaman & ber-AC</span>
+                            <span class="bg-white/20 px-3 py-1.5 rounded-lg"><i class="fa-solid fa-suitcase mr-1 text-amber-300"></i> Bagasi Luas</span>
+                        </div>
+                    </div>
+                    <div class="text-center lg:text-right">
+                        <a href="https://wa.me/6285790850329?text=Halo%20dp%20Trans,%20saya%20ingin%20tanya%20jadwal%20dan%20harga%20Travel%20Blitar-Surabaya" target="_blank" class="inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-slate-900 font-black px-8 py-4 rounded-xl transition-all transform hover:-translate-y-1 shadow-xl">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <div class="text-left">
+                                <p class="text-xs text-slate-800 uppercase leading-none font-bold">Tanya jadwal & harga</p>
+                                <p class="text-lg leading-tight">Chat WhatsApp</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price List Armada Section -->
+    <section id="armada" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Pilihan mobil</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Pilih mobil sesuai kebutuhan</h2>
+                <p class="text-slate-600 font-medium">Lihat kapasitas dan harga sewa harian. Hubungi kami untuk memastikan ketersediaan mobil dan detail layanan.</p>
+            </div>
+
+            <!-- Vehicles Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="carList">
+                <!-- Javascript will populate this or fallback static html -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Distance & Price Estimator Calculator -->
+    <section id="kalkulator" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="inline-block bg-brand-500/20 text-brand-400 border border-brand-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                        Perkiraan biaya
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black leading-tight">Hitung perkiraan biaya sewa</h2>
+                    <p class="text-slate-400 font-medium leading-relaxed">
+                        Pilih mobil, rute, dan lama sewa untuk melihat perkiraan biaya mobil serta bahan bakar sebelum menghubungi kami.
+                    </p>
+                    
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-600/30 flex items-center justify-center text-brand-400 shrink-0">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Biaya sewa + perkiraan BBM</h4>
+                                <p class="text-xs text-slate-400">Parkiraan BBM dihitung berdasarkan jarak rute.</p>
+                                <p class="text-xs text-slate-400">Harga sewaktu waktu bisa berubah</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">  
+                            <div class="w-10 h-10 rounded-xl bg-accent-500/30 flex items-center justify-center text-accent-400 shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Konfirmasi lewat WhatsApp</h4>
+                                <p class="text-xs text-slate-400">Kirim rincian ini kepada kami untuk menanyakan ketersediaan mobil.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Calculator Form Container -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-800 border border-slate-700 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2 border-b border-slate-700 pb-4">
+                            <i class="fa-solid fa-route text-brand-500"></i> Atur perjalanan Anda
+                        </h3>
+
+                        <form id="calcForm" class="space-y-4" onsubmit="event.preventDefault();">
+                            <!-- Select Car -->
+                            <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Pilih mobil</label>
+                                <select id="calcCar" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 text-sm font-semibold">
+                                    <!-- Populated dynamically via JS -->
+                                </select>
+                            </div>
+
+                            <!-- Route Selection or Custom Distance -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Pilih rute populer</label>
+                                    <select id="calcPresetRoute" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 text-sm font-semibold">
+                                        <option value="custom">Masukkan jarak sendiri</option>
+                                        <option value="160" selected>Blitar ⇄ Surabaya (pulang-pergi, ±160 km)</option>
+                                        <option value="80">Blitar ⇄ Malang (±80 km)</option>
+                                        <option value="90">Blitar ⇄ Kediri (±90 km)</option>
+                                        <option value="175">Blitar ⇄ Bandara Juanda (±175 km)</option>
+                                        <option value="250">Blitar ⇄ Madiun (±250 km)</option>
+                                        <option value="350">Blitar ⇄ Banyuwangi (±350 km)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Jarak perjalanan (km)</label>
+                                    <input type="number" id="calcDistance" value="160" min="10" placeholder="Masukkan KM" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500 text-sm font-semibold">
+                                </div>
+                            </div>
+
+                            <!-- Duration (Days) -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Lama Sewa (Hari)</label>
+                                <div class="flex items-center gap-3">
+                                    <input type="range" id="calcDays" min="1" max="14" value="1" class="w-full accent-brand-500 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                                    <span id="daysDisplay" class="bg-brand-600 text-white font-bold px-4 py-2 rounded-xl text-sm min-w-[70px] text-center">1 Hari</span>
+                                </div>
+                            </div>
+
+                            <!-- Calculation Result Box -->
+                            <div class="bg-slate-900/90 rounded-2xl p-5 border border-slate-700/80 space-y-3 mt-6">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-slate-400">Harga Sewa Mobil (<span id="resDays">1</span> Hari)</span>
+                                    <span id="resCarPrice" class="font-bold text-white">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-slate-400">Est. Konsumsi BBM (~<span id="resKM">160</span> KM)</span>
+                                    <span id="resFuelPrice" class="font-bold text-white">Rp 0</span>
+                                </div>
+                                <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+                                    <div>
+                                        <span class="text-xs text-slate-400 block font-semibold">PERKIRAAN TOTAL</span>
+                                        <span class="text-xs text-amber-400">Perkiraan BBM memakai asumsi 1 liter/10 km dan Rp13.000/liter. Belum termasuk tol dan parkir.</span>
+                                    </div>
+                                    <span id="resTotalPrice" class="text-2xl font-black text-accent-400">Rp 0</span>
+                                </div>
+                            </div>
+
+                            <!-- Submit to WhatsApp Button -->
+                            <button type="button" id="btnSendWA" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-accent-500/20 flex items-center justify-center gap-2 text-base">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i> Tanyakan harga via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="keunggulan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Keunggulan Layanan</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Perjalanan nyaman, dari awal sampai tujuan</h2>
+                <p class="text-slate-600 font-medium">Kami menjaga kendaraan tetap terawat, membantu memilih layanan, dan siap menerima pertanyaan Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Advantage 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all space-y-4">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-car-on"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Mobil terawat</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Setiap mobil dirawat secara berkala dan dibersihkan sebelum digunakan.
+                    </p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all space-y-4">
+                    <div class="w-14 h-14 bg-accent-50 text-accent-600 rounded-2xl flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Pengemudi berpengalaman</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Pengemudi ramah yang mengenal rute utama dan jalur alternatif di Jawa Timur.
+                    </p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all space-y-4">
+                    <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Harga jelas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Kami menjelaskan tarif dan rincian layanan sebelum Anda memesan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white border-t border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <a href="#beranda" class="brand-logo-crop brand-logo-footer" aria-label="dp Trans, kembali ke beranda">
+                        <img src="dp-trans-logo-trim.png" alt="dp Trans — Tour Travel & Car Rental">
+                    </a>
+                    <p class="text-slate-400 text-sm max-w-sm">
+                        Sewa mobil harian dan travel reguler Blitar ⇄ Surabaya. Hubungi kami untuk bertanya tentang jadwal, harga, dan ketersediaan.
+                    </p>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="space-y-3">
+                    <p class="font-bold text-slate-200 text-sm uppercase tracking-wider">Navigasi</p>
+                    <ul class="space-y-2 text-sm text-slate-400 font-medium">
+                        <li><a href="#beranda" class="hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="#armada" class="hover:text-white transition-colors">Pilihan mobil</a></li>
+                        <li><a href="#travel" class="hover:text-white transition-colors">Travel Blitar ⇄ Surabaya</a></li>
+                        <li><a href="#kalkulator" class="hover:text-white transition-colors">Hitung perkiraan biaya</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-3">
+                    <p class="font-bold text-slate-200 text-sm uppercase tracking-wider">Kontak Kami</p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-accent-500 text-lg"></i>
+                            <a href="https://wa.me/6285790850329" target="_blank" class="hover:text-white font-bold">0857-9085-0329</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-500 mt-1"></i>
+                            <span>Blitar & Surabaya, Jawa Timur, Indonesia</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-regular fa-clock text-amber-400"></i>
+                            <span>24 Jam Melayani Pemesanan</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                <p>&copy; <span id="yearSpan"></span> dp Trans. Hak cipta dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6285790850329?text=Halo%20dp%20Trans,%20saya%20ingin%20tanya%20sewa%20mobil/travel" target="_blank" class="fixed bottom-6 right-6 z-50 bg-accent-500 hover:bg-accent-600 text-white rounded-full p-4 shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center group" title="Chat WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out font-bold text-sm px-0 group-hover:px-2">
+            Chat WhatsApp
+        </span>
+    </a>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // Car Data Catalog
+        const carsData = [
+            { id: 'sigra', name: 'Daihatsu Sigra', price: 300000, capacity: '7 kursi', transmission: 'Manual', type: 'Irit', image: 'sigra-cutout.png', localImage: true },
+            { id: 'brio', name: 'Honda Brio', price: 350000, capacity: '5 kursi', transmission: 'Manual/Matik', type: 'Mobil kota', image: 'brio-cutout.png', localImage: true },
+            { id: 'avanza', name: 'All New Avanza', price: 400000, capacity: '7 kursi', transmission: 'Manual/Matik', type: 'MPV keluarga', image: 'avanza-cutout.png', localImage: true },
+            { id: 'xenia', name: 'All New Xenia', price: 400000, capacity: '7 kursi', transmission: 'Manual/Matik', type: 'MPV keluarga', image: 'xenia-cutout.png', localImage: true },
+            { id: 'terios', name: 'All New Terios', price: 400000, capacity: '7 kursi', transmission: 'Manual/Matik', type: 'SUV', image: 'terios-cutout.png', localImage: true },
+            { id: 'innova', name: 'Innova Reborn', price: 500000, capacity: '7–8 kursi', transmission: 'Manual/Matik', type: 'MPV premium', image: 'innova-cutout.png', localImage: true },
+            { id: 'elf-long', name: 'Elf Long', price: 600000, capacity: '16–19 kursi', transmission: 'Manual', type: 'Minibus rombongan', image: 'elf-long-cutout.png', localImage: true },
+            { id: 'elf-short', name: 'Elf Short', price: 400000, capacity: '12–14 kursi', transmission: 'Manual', type: 'Minibus sedang', image: 'elf-short-cutout.png', localImage: true },
+            { id: 'hiace-com', name: 'Hiace Commuter', price: 750000, capacity: '14 kursi', transmission: 'Manual', type: 'Minibus nyaman', image: 'hiace-commuter-cutout.png', localImage: true },
+            { id: 'hiace-pre', name: 'Hiace Premio', price: 850000, capacity: '14 kursi', transmission: 'Manual', type: 'Minibus premium', image: 'hiace-premio-cutout.png', localImage: true },
+        ];
+
+        // Format Currency Helper
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        // Render Car Grid
+        function renderCars() {
+            const carContainer = document.getElementById('carList');
+            const carSelect = document.getElementById('calcCar');
+            
+            carContainer.innerHTML = '';
+            carSelect.innerHTML = '';
+
+            carsData.forEach(car => {
+                // Populate Grid Card
+                const photoSrc = car.localImage
+                    ? car.image
+                    : `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(car.image)}?width=900`;
+                const photoCredit = car.localImage
+                    ? ''
+                    : `<span class="photo-credit"><a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(car.image)}" target="_blank" rel="noopener noreferrer">Foto: ${car.author}</a><span>·</span><a href="${car.licenseUrl}" target="_blank" rel="noopener noreferrer">${car.license}</a></span>`;
+                const cardHtml = `
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${car.id.startsWith('hiace') ? 'hiace-card' : ''}">
+                        <div>
+            <div class="car-photo ${car.localImage ? 'has-cutout' : ''}">
+                                <img src="${photoSrc}" alt="${car.name}" loading="lazy" decoding="async">
+                                ${photoCredit}
+                            </div>
+                            
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold bg-brand-100 text-brand-700 px-2.5 py-1 rounded-full">${car.type}</span>
+                                <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-users mr-1"></i> ${car.capacity}</span>
+                            </div>
+
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">${car.name}</h3>
+                            
+                            <div class="flex items-baseline gap-1 my-4">
+                                <span class="text-2xl font-black text-brand-600">${formatRupiah(car.price)}</span>
+                                <span class="text-xs text-slate-500 font-semibold">per hari</span>
+                            </div>
+
+                            <div class="space-y-1.5 text-xs text-slate-600 border-t border-slate-100 pt-3 mb-6">
+                                <p><i class="fa-solid fa-circle-check text-accent-500 mr-2"></i> Bersih dan terawat</p>
+                                <p><i class="fa-solid fa-circle-check text-accent-500 mr-2"></i> Nyaman dengan AC</p>
+                                <p><i class="fa-solid fa-circle-check text-accent-500 mr-2"></i> Tersedia opsi dengan pengemudi tambahan biaya</p>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/6285790850329?text=Halo%20dp%20Trans,%20saya%20ingin%20sewa%20mobil%20${encodeURIComponent(car.name)}%20(Rp%20${car.price.toLocaleString('id-ID')}/hari)" target="_blank" class="w-full bg-slate-900 group-hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Tanya mobil ini
+                        </a>
+                    </div>
+                `;
+                carContainer.innerHTML += cardHtml;
+
+                // Populate Dropdown Select in Calculator
+                const option = document.createElement('option');
+                option.value = car.id;
+                option.textContent = `${car.name} - ${formatRupiah(car.price)}/hari`;
+                carSelect.appendChild(option);
+            });
+        }
+
+        // Calculator Logic
+        function updateCalculation() {
+            const carId = document.getElementById('calcCar').value;
+            const distance = parseFloat(document.getElementById('calcDistance').value) || 0;
+            const days = parseInt(document.getElementById('calcDays').value) || 1;
+
+            const selectedCar = carsData.find(c => c.id === carId) || carsData[0];
+            
+            // Daily Rate calculation
+            const carTotalPrice = selectedCar.price * days;
+
+            // Estimated Fuel Cost Calculation (Approx. 1 Liter per 10km @ Rp 13.000/liter)
+            const fuelCostPerKm = 1300; 
+            const estimatedFuelPrice = Math.round(distance * fuelCostPerKm);
+
+            // Total Price Calculation
+            const totalPrice = carTotalPrice + estimatedFuelPrice;
+
+            // UI Updates
+            document.getElementById('daysDisplay').textContent = `${days} Hari`;
+            document.getElementById('resDays').textContent = days;
+            document.getElementById('resKM').textContent = distance;
+            document.getElementById('resCarPrice').textContent = formatRupiah(carTotalPrice);
+            document.getElementById('resFuelPrice').textContent = formatRupiah(estimatedFuelPrice);
+            document.getElementById('resTotalPrice').textContent = formatRupiah(totalPrice);
+        }
+
+        // Event Listeners for Calculator
+        document.getElementById('calcPresetRoute').addEventListener('change', function(e) {
+            if (e.target.value !== 'custom') {
+                document.getElementById('calcDistance').value = e.target.value;
+            }
+            updateCalculation();
+        });
+
+        document.getElementById('calcCar').addEventListener('change', updateCalculation);
+        document.getElementById('calcDistance').addEventListener('input', updateCalculation);
+        document.getElementById('calcDays').addEventListener('input', updateCalculation);
+
+        // Send Custom Booking to WhatsApp
+        document.getElementById('btnSendWA').addEventListener('click', function() {
+            const carId = document.getElementById('calcCar').value;
+            const distance = document.getElementById('calcDistance').value;
+            const days = document.getElementById('calcDays').value;
+            const selectedCar = carsData.find(c => c.id === carId) || carsData[0];
+
+            const totalSewa = formatRupiah(selectedCar.price * days);
+            const totalEstimasi = document.getElementById('resTotalPrice').textContent;
+
+                const message = `Halo *dp Trans*, saya ingin bertanya tentang sewa mobil berdasarkan perkiraan di website:\n\n` +
+                            `🚗 *Mobil*: ${selectedCar.name}\n` +
+                            `📅 *Lama Sewa*: ${days} Hari\n` +
+                            `🛣️ *Estimasi Jarak*: ${distance} KM\n` +
+                            `💰 *Estimasi Total*: ${totalEstimasi}\n\n` +
+                            `Mohon konfirmasi ketersediaan armada. Terima kasih!`;
+
+            window.open(`https://wa.me/6285790850329?text=${encodeURIComponent(message)}`, '_blank');
+        });
+
+        // Toggle Mobile Navigation Menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCars();
+            updateCalculation();
+            document.getElementById('yearSpan').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
