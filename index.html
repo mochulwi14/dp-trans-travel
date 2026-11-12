@@ -158,7 +158,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobilxeMenuBtn" class="text-slate-600 hover:text-slate-900 p-2 rounded-lg focus:outline-none">
+                    <button id="mobileMenuBtn" class="text-slate-600 hover:text-slate-900 p-2 rounded-lg focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -679,10 +679,9 @@
             window.open(`https://wa.me/6285790850329?text=${encodeURIComponent(message)}`, '_blank');
         });
 
-        // Toggle Mobile Navigation Menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+        // Toggle Mobile Navigation Menu (null-safe so it can never break the rest of the page)
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('mobileMenu')?.classList.toggle('hidden');
         });
 
         // Initialize Page
