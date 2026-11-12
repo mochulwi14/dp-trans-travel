@@ -44,6 +44,12 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Armada artwork in the home hero */
+        #beranda { isolation: isolate; background: radial-gradient(ellipse at 14% 38%, rgb(250 204 21 / .11), transparent 34%), radial-gradient(ellipse at 88% 62%, rgb(250 204 21 / .08), transparent 30%), linear-gradient(145deg, #171717 0%, #090909 58%, #1b1b1b 100%) !important; }
+        #beranda::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgb(16 16 16 / .98) 0%, rgb(16 16 16 / .88) 29%, rgb(16 16 16 / .66) 59%, rgb(16 16 16 / .22) 100%), linear-gradient(90deg, rgb(16 16 16 / .35), transparent 68%, rgb(16 16 16 / .18)); }
+        #beranda .hero-fleet-backdrop { position: absolute; z-index: 0; left: 50%; bottom: 0; transform: translateX(-50%); width: min(100%, 1600px); height: 84%; object-fit: contain; object-position: center bottom; opacity: .66; filter: drop-shadow(0 24px 35px rgb(0 0 0 / .38)); pointer-events: none; }
+        @media (max-width: 640px) { #beranda .hero-fleet-backdrop { width: 145%; max-width: none; height: 47%; opacity: .43; } }
+
         /* Black and yellow theme */
         body { background-color: #101010 !important; color: #f4f4f4 !important; font-size: 15px; line-height: 1.65; }
         p { line-height: 1.75; }
@@ -173,6 +179,7 @@
 
     <!-- Hero Section -->
     <section id="beranda" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-brand-50 via-white to-slate-50">
+        <img class="hero-fleet-backdrop" src="hero-fleet-composite.png" alt="" aria-hidden="true" fetchpriority="high">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
