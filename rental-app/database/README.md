@@ -1,10 +1,10 @@
-# Database Kelola Rental & Travel
+# Database Managgemen DP Trans
 
 ## Berkas yang disertakan
 
-- `example.sqlite`: SQLite siap pakai, berisi satu snapshot `demo` dengan data latihan.
-- `example.sql`: dump SQL yang mereproduksi database contoh, termasuk skema.
-- `example.json`: cadangan contoh yang dapat diimpor melalui Pengaturan → Pulihkan JSON. Lakukan pada mode contoh untuk latihan.
+- `managgemen_dp_trans.sqlite`: SQLite siap pakai, berisi satu snapshot `demo` dengan data latihan.
+- `managgemen_dp_trans.sql`: dump SQL yang mereproduksi database contoh, termasuk skema.
+- `managgemen_dp_trans.json`: cadangan contoh yang dapat diimpor melalui Pengaturan → Pulihkan JSON. Lakukan pada mode contoh untuk latihan.
 - `../drizzle/0000_business.sql`: migrasi skema D1 yang digunakan versi online.
 - `../drizzle/meta/_journal.json`: urutan migrasi yang digunakan deployment.
 
@@ -31,7 +31,7 @@ Untuk path lain, set `KRT_DB_PATH` dan `KRT_FILES_PATH` di environment sebelum m
 Jika memiliki CLI SQLite, database contoh juga bisa direproduksi:
 
 ```bash
-sqlite3 /tmp/kelola-contoh.sqlite < database/example.sql
+sqlite3 /tmp/managgemen_dp_trans.sqlite < database/managgemen_dp_trans.sql
 ```
 
 ## Pemulihan data usaha
@@ -58,3 +58,5 @@ node scripts/backup-crypto.mjs decrypt /path/private/business-data-2026-11-16.en
 ```
 
 Ekstrak ZIP secara lokal, kemudian gunakan berkas JSON untuk pemulihan melalui Pengaturan aplikasi. Jangan commit arsip yang sudah didekripsi, database usaha asli, atau kuncinya.
+
+Nama database lokal: **Managgemen DP Trans** (`managgemen_dp_trans.sqlite`). Binding database online tetap `DB` agar data produksi yang ada terus terhubung; nama binding bukan nama berkas SQLite.

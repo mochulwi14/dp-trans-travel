@@ -33,4 +33,4 @@ Sistem web Indonesia/Rupiah untuk rental dan travel. Worker ESM tanpa dependensi
 
 ## Paket GitHub
 
-Mulai dengan `npm start` (Node.js 24+). Database contoh, SQL, JSON, serta instruksi pemulihan tersedia di [database/README.md](database/README.md). Database `.runtime/kelola.sqlite` dan dokumen `.runtime/files/` bertahan saat server lokal dimulai ulang. Server lokal hanya mendengarkan 127.0.0.1 dan menggunakan identitas simulasi; jangan digunakan sebagai login produksi.
+Mulai dengan `npm start` (Node.js 24+). Database contoh, SQL, JSON, serta instruksi pemulihan tersedia di [database/README.md](database/README.md). Database `.runtime/managgemen_dp_trans.sqlite` dan dokumen `.runtime/files/` bertahan saat server lokal dimulai ulang. Server lokal hanya mendengarkan 127.0.0.1 dan menggunakan identitas simulasi; jangan digunakan sebagai login produksi.

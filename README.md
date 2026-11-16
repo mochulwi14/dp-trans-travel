@@ -21,7 +21,7 @@ cd rental-app
 npm start
 ```
 
-Buka **http://127.0.0.1:8090**. Data tersimpan di `rental-app/.runtime/kelola.sqlite`; unggahan lokal di `.runtime/files/`. Klik **Buka data contoh** untuk latihan. Identitas pemilik pada server lokal merupakan simulasi untuk pengujian, bukan sistem login produksi.
+Buka **http://127.0.0.1:8090**. Data tersimpan di `rental-app/.runtime/managgemen_dp_trans.sqlite`; unggahan lokal di `.runtime/files/`. Klik **Buka data contoh** untuk latihan. Identitas pemilik pada server lokal merupakan simulasi untuk pengujian, bukan sistem login produksi.
 
 ```bash
 npm test
@@ -39,3 +39,7 @@ Versi online memakai autentikasi Sites/ChatGPT, Cloudflare D1 (`DB`), dan penyim
 ## Database dan privasi
 
 Repositori ini publik. Database yang disertakan adalah **data contoh**, tanpa dokumen pelanggan atau cadangan usaha asli. Migrasi SQL dan contoh database cukup untuk menjalankan aplikasi dari awal. Cadangan data usaha dibuat terpisah dan dikecualikan dari Git; impor melalui **Pengaturan → Pulihkan JSON** pada lingkungan privat yang sesuai.
+
+## Nama database
+
+Database **Managgemen DP Trans** tersedia sebagai `rental-app/database/managgemen_dp_trans.sqlite`, `.sql`, dan `.json` (data contoh). Database lokal aktif memakai `.runtime/managgemen_dp_trans.sqlite`.
