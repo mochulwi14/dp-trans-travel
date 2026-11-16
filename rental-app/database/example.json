@@ -1,0 +1,270 @@
+{
+  "format": "kelola-rental-v2",
+  "sample": true,
+  "state": {
+    "schema": 2,
+    "settings": {
+      "name": "Kelola Rental & Travel",
+      "ownerId": "preview-owner",
+      "ownerEmail": "pemilik@contoh.test",
+      "bankInfo": "",
+      "terms": "Durasi sewa mengikuti jadwal yang disepakati. Biaya keterlambatan, kerusakan, pembatalan, dan pengembalian jaminan wajib disepakati sebelum penyerahan kendaraan.",
+      "requireCollateral": true,
+      "retentionDays": 90,
+      "users": [],
+      "adminPermissions": [
+        "dashboard",
+        "bookings",
+        "travel",
+        "vehicles",
+        "drivers",
+        "customers",
+        "finance",
+        "reports",
+        "documents"
+      ],
+      "staffPermissions": [
+        "dashboard",
+        "bookings",
+        "travel",
+        "customers"
+      ]
+    },
+    "accounts": [
+      {
+        "id": "cash",
+        "name": "Kas tunai",
+        "type": "cash",
+        "opening": 0
+      },
+      {
+        "id": "bank",
+        "name": "Rekening bank",
+        "type": "bank",
+        "opening": 0
+      }
+    ],
+    "vehicles": [
+      {
+        "id": "demo-v",
+        "name": "Toyota Avanza (contoh)",
+        "plate": "DEMO 01",
+        "ownership": "owned",
+        "brand": "Toyota",
+        "model": "Avanza",
+        "year": 2023,
+        "rate": 450000,
+        "km": 30000,
+        "cost": 200000000,
+        "salvage": 50000000,
+        "lifeMonths": 60,
+        "assetDate": "2026-01-01",
+        "partnerFee": 0,
+        "active": true
+      }
+    ],
+    "drivers": [
+      {
+        "id": "demo-d",
+        "name": "Pengemudi Contoh",
+        "phone": "081200000001",
+        "rate": 150000,
+        "licenseExpiry": "2030-01-01"
+      }
+    ],
+    "customers": [
+      {
+        "id": "demo-c",
+        "name": "Pelanggan Contoh",
+        "phone": "081200000000",
+        "verification": "unchecked",
+        "files": []
+      }
+    ],
+    "routes": [
+      {
+        "name": "Jakarta - Bandung (contoh)",
+        "origin": "Jakarta",
+        "destination": "Bandung",
+        "id": "e5b81494-eb0b-4896-b670-abd0e2904adf"
+      }
+    ],
+    "trips": [],
+    "bookings": [
+      {
+        "id": "demo-b",
+        "number": "CONTOH-001",
+        "customer": "demo-c",
+        "service": "Rental dengan pengemudi",
+        "vehicle": "demo-v",
+        "driver": "demo-d",
+        "start": "2026-11-16T07:00",
+        "end": "2026-11-16T18:00",
+        "fee": 900000,
+        "extra": 0,
+        "discount": 0,
+        "status": "completed",
+        "accepted": true,
+        "termsSnapshot": "Durasi sewa mengikuti jadwal yang disepakati. Biaya keterlambatan, kerusakan, pembatalan, dan pengembalian jaminan wajib disepakati sebelum penyerahan kendaraan.",
+        "requireCollateral": false
+      },
+      {
+        "customer": "demo-c",
+        "service": "Rental dengan pengemudi",
+        "trip": "",
+        "vehicle": "demo-v",
+        "driver": "demo-d",
+        "start": "2026-11-17T08:00",
+        "end": "2026-11-17T18:00",
+        "pickup": "",
+        "destination": "",
+        "seats": 0,
+        "fee": 450000,
+        "discount": 0,
+        "extra": 0,
+        "paymentDue": "2026-11-16",
+        "status": "confirmed",
+        "accepted": true,
+        "note": "",
+        "passengers": [],
+        "id": "1d87a8d8-cf38-4a72-9c9b-391681acf200",
+        "number": "KRT-20261116-0002",
+        "requireCollateral": true,
+        "termsSnapshot": "Durasi sewa mengikuti jadwal yang disepakati. Biaya keterlambatan, kerusakan, pembatalan, dan pengembalian jaminan wajib disepakati sebelum penyerahan kendaraan.",
+        "legacy": false
+      },
+      {
+        "customer": "demo-c",
+        "service": "Rental dengan pengemudi",
+        "trip": "",
+        "vehicle": "demo-v",
+        "driver": "demo-d",
+        "start": "2026-11-20T08:00",
+        "end": "2026-11-20T18:00",
+        "pickup": "Alamat pelanggan",
+        "destination": "Bandung",
+        "seats": 0,
+        "fee": 1000000,
+        "discount": 0,
+        "extra": 0,
+        "paymentDue": "2026-11-16",
+        "status": "confirmed",
+        "accepted": true,
+        "note": "",
+        "passengers": [],
+        "id": "f9a601ea-6179-4060-975a-6cba795b9ea0",
+        "number": "KRT-20261116-0003",
+        "requireCollateral": true,
+        "termsSnapshot": "Durasi sewa mengikuti jadwal yang disepakati. Biaya keterlambatan, kerusakan, pembatalan, dan pengembalian jaminan wajib disepakati sebelum penyerahan kendaraan.",
+        "legacy": false
+      }
+    ],
+    "entries": [
+      {
+        "id": "demo-p",
+        "date": "2026-11-16",
+        "type": "payment",
+        "amount": 600000,
+        "account": "bank",
+        "booking": "demo-b",
+        "description": "DP dan pelunasan sebagian — contoh",
+        "method": "Transfer bank",
+        "files": []
+      },
+      {
+        "id": "demo-ep",
+        "date": "2026-11-16",
+        "type": "expensePayment",
+        "amount": 200000,
+        "account": "cash",
+        "expense": "demo-e",
+        "description": "Pembayaran BBM contoh",
+        "files": []
+      },
+      {
+        "booking": "f9a601ea-6179-4060-975a-6cba795b9ea0",
+        "type": "payment",
+        "description": "Pembayaran KRT-20261116-0003",
+        "date": "2026-11-16",
+        "account": "bank",
+        "toAccount": "",
+        "expense": "",
+        "loan": "",
+        "amount": 300000,
+        "method": "Transfer bank",
+        "files": [],
+        "id": "af251c7b-1739-4c4f-aaca-933b68cf7c9e"
+      }
+    ],
+    "expenses": [
+      {
+        "id": "demo-e",
+        "date": "2026-11-16",
+        "category": "BBM",
+        "description": "BBM perjalanan contoh",
+        "amount": 200000,
+        "vehicle": "demo-v",
+        "booking": "demo-b",
+        "due": "2026-11-16",
+        "files": []
+      },
+      {
+        "date": "2026-11-16",
+        "category": "BBM",
+        "description": "BBM perjalanan Bandung - contoh",
+        "amount": 250000,
+        "due": "2026-11-16",
+        "payee": "",
+        "vehicle": "demo-v",
+        "booking": "f9a601ea-6179-4060-975a-6cba795b9ea0",
+        "driver": "",
+        "files": [],
+        "id": "e2b55b5e-1999-4f80-b8ca-3157b9310c04"
+      }
+    ],
+    "loans": [],
+    "collaterals": [],
+    "audit": [
+      {
+        "id": "cfe4af02-44c1-4e72-94c7-6dd8912ce0d3",
+        "at": "2026-11-16T06:12:03.440Z",
+        "user": "pemilik@contoh.test",
+        "action": "Tambah data",
+        "kind": "bookings",
+        "record": "1d87a8d8-cf38-4a72-9c9b-391681acf200"
+      },
+      {
+        "id": "8a49a071-017d-41be-aa72-eb16607cc050",
+        "at": "2026-11-16T06:33:30.107Z",
+        "user": "pemilik@contoh.test",
+        "action": "Tambah data",
+        "kind": "bookings",
+        "record": "f9a601ea-6179-4060-975a-6cba795b9ea0"
+      },
+      {
+        "id": "a918132b-db6a-4575-8bb4-096e23c14db9",
+        "at": "2026-11-16T06:33:55.874Z",
+        "user": "pemilik@contoh.test",
+        "action": "Tambah data",
+        "kind": "entries",
+        "record": "af251c7b-1739-4c4f-aaca-933b68cf7c9e"
+      },
+      {
+        "id": "5bd3a6a0-d5a2-4e0d-9099-ee8db4c32e2d",
+        "at": "2026-11-16T06:33:57.035Z",
+        "user": "pemilik@contoh.test",
+        "action": "Tambah data",
+        "kind": "expenses",
+        "record": "e2b55b5e-1999-4f80-b8ca-3157b9310c04"
+      },
+      {
+        "id": "c3ef211a-d782-4e6a-a5e9-10ee06110a22",
+        "at": "2026-11-16T06:34:26.966Z",
+        "user": "pemilik@contoh.test",
+        "action": "Tambah data",
+        "kind": "routes",
+        "record": "e5b81494-eb0b-4896-b670-abd0e2904adf"
+      }
+    ]
+  }
+}

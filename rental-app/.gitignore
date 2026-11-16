@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.runtime/
+.wrangler/
+.env
+.env.*
+!.env.example
+*.sqlite-wal
+*.sqlite-shm

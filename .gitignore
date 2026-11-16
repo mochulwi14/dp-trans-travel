@@ -1,0 +1,13 @@
+# Sites-managed working copy is published separately; GitHub source is rental-app/.
+/keuangan/
+/private-backups/
+**/node_modules/
+**/.runtime/
+**/.wrangler/
+**/.env
+**/.env.*
+!**/.env.example
+**/*.sqlite-wal
+**/*.sqlite-shm
+**/.DS_Store
+/rental-app/dist/

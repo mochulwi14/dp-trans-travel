@@ -1,0 +1,319 @@
+1
+00:00:00,000 --> 00:00:04,602
+Selamat datang di panduan pengisian Kelola Rental dan Travel.
+
+2
+00:00:04,602 --> 00:00:10,562
+Video ini menggunakan tampilan aplikasi dan data contoh, bukan data usaha asli.
+
+3
+00:00:10,562 --> 00:00:14,712
+Mulailah dengan tombol Buka data contoh untuk berlatih.
+
+4
+00:00:14,712 --> 00:00:18,107
+Anda dapat menjeda video pada setiap langkah.
+
+5
+00:00:19,700 --> 00:00:24,356
+Langkah pertama, buka Pengaturan, kemudian Ubah pengaturan.
+
+6
+00:00:24,356 --> 00:00:28,696
+Isi nama usaha, rekening pembayaran, serta syarat sewa.
+
+7
+00:00:28,696 --> 00:00:34,378
+Atur ketentuan jaminan, masa penyimpanan dokumen, dan hak akses petugas.
+
+8
+00:00:34,378 --> 00:00:37,771
+Simpan setelah seluruh informasi diperiksa.
+
+9
+00:00:39,300 --> 00:00:41,838
+Buka Keuangan, lalu Kas dan bank.
+
+10
+00:00:41,838 --> 00:00:45,221
+Tambahkan akun kas tunai atau rekening bank.
+
+11
+00:00:45,221 --> 00:00:51,373
+Pada contoh ini, nama akunnya Kas operasional dengan saldo awal dua juta rupiah.
+
+12
+00:00:51,373 --> 00:00:54,526
+Isi saldo awal sebelum transaksi pertama.
+
+13
+00:00:54,526 --> 00:00:59,294
+Jangan mencatat saldo awal yang sama lagi sebagai modal masuk.
+
+14
+00:01:00,800 --> 00:01:03,392
+Berikutnya, tambahkan kendaraan.
+
+15
+00:01:03,392 --> 00:01:10,036
+Isi nama, nomor polisi, merek, tipe, persyaratan SIM, tahun, tarif, dan kilometer.
+
+16
+00:01:10,036 --> 00:01:15,059
+Untuk kendaraan sendiri, lengkapi nilai aset serta penyusutan.
+
+17
+00:01:15,059 --> 00:01:19,596
+Untuk kendaraan mitra, isi pemilik dan skema bagi hasil.
+
+18
+00:01:19,596 --> 00:01:23,079
+Atur tanggal servis dan pajak, lalu simpan.
+
+19
+00:01:24,600 --> 00:01:31,606
+Buka Pengemudi untuk mengisi nama, nomor handphone, nomor SIM, masa berlaku, serta tarif jasa.
+
+20
+00:01:31,606 --> 00:01:34,364
+Gunakan informasi yang masih berlaku.
+
+21
+00:01:34,364 --> 00:01:40,997
+Riwayat perjalanan dan pembayaran pengemudi dapat ditinjau kembali dari daftar pengemudi.
+
+22
+00:01:42,500 --> 00:01:46,862
+Tambahkan pelanggan dengan nama dan nomor handphone aktif.
+
+23
+00:01:46,862 --> 00:01:56,187
+Untuk lepas kunci, petugas berwenang melengkapi KTP, SIM, masa berlaku, alamat, dan kontak darurat, lalu mengunggah dokumen.
+
+24
+00:01:56,187 --> 00:02:00,248
+Pilih Terverifikasi hanya setelah pemeriksaan selesai.
+
+25
+00:02:00,248 --> 00:02:03,933
+Nomor identitas disamarkan pada daftar pelanggan.
+
+26
+00:02:05,500 --> 00:02:07,118
+Klik Tambah Pemesanan.
+
+27
+00:02:07,118 --> 00:02:09,619
+Pilih pelanggan dan jenis layanan.
+
+28
+00:02:09,619 --> 00:02:13,370
+Tentukan kendaraan serta pengemudi jika diperlukan.
+
+29
+00:02:13,370 --> 00:02:19,033
+Isi tanggal dan jam berangkat, waktu selesai, lokasi penjemputan, dan tujuan.
+
+30
+00:02:19,033 --> 00:02:24,770
+Pada contoh ini digunakan rental dengan pengemudi untuk perjalanan ke Bandung.
+
+31
+00:02:26,300 --> 00:02:27,693
+Isi tarif layanan.
+
+32
+00:02:27,693 --> 00:02:32,954
+Contoh tagihannya satu juta rupiah, tanpa diskon dan biaya tambahan.
+
+33
+00:02:32,954 --> 00:02:38,680
+Tentukan jatuh tempo, periksa syarat sewa, lalu catat persetujuan penyewa.
+
+34
+00:02:38,680 --> 00:02:44,716
+Simpan sebagai Draf jika belum pasti, atau Dikonfirmasi jika sudah disepakati.
+
+35
+00:02:44,716 --> 00:02:50,055
+Sistem akan menolak jadwal kendaraan atau pengemudi yang bertabrakan.
+
+36
+00:02:51,600 --> 00:02:57,145
+Untuk uang muka, buka Detail pemesanan, kemudian pilih DP atau pembayaran.
+
+37
+00:02:57,145 --> 00:03:02,241
+Pastikan jenisnya Pembayaran pelanggan dan nomor pemesanannya benar.
+
+38
+00:03:02,241 --> 00:03:05,239
+Pilih akun penerima dan metode transfer.
+
+39
+00:03:05,239 --> 00:03:10,334
+Masukkan tiga ratus ribu rupiah, unggah bukti jika ada, lalu simpan.
+
+40
+00:03:10,334 --> 00:03:13,557
+Catat hanya uang yang benar-benar diterima.
+
+41
+00:03:15,100 --> 00:03:18,057
+Buka Invoice untuk memeriksa hasilnya.
+
+42
+00:03:18,057 --> 00:03:25,449
+Tagihan satu juta rupiah, pembayaran tiga ratus ribu, sehingga sisanya tujuh ratus ribu rupiah.
+
+43
+00:03:25,449 --> 00:03:32,529
+Ketika pelanggan melunasi, catat pembayaran baru sebesar tujuh ratus ribu, bukan satu juta.
+
+44
+00:03:32,529 --> 00:03:37,587
+Invoice dapat diunduh sebagai PDF dan dibagikan melalui WhatsApp.
+
+45
+00:03:39,100 --> 00:03:40,835
+Klik Catat Pengeluaran.
+
+46
+00:03:40,835 --> 00:03:43,928
+Pilih tanggal dan kategori, misalnya BBM.
+
+47
+00:03:43,928 --> 00:03:49,058
+Isi deskripsi serta jumlah tagihan dua ratus lima puluh ribu rupiah.
+
+48
+00:03:49,058 --> 00:03:54,716
+Hubungkan dengan kendaraan dan pemesanan yang sesuai, kemudian unggah nota.
+
+49
+00:03:54,716 --> 00:04:01,279
+Simpan tagihan terlebih dahulu; pembayaran uang keluarnya dicatat melalui tombol Bayar.
+
+50
+00:04:02,800 --> 00:04:05,922
+Dari Keuangan, buka Pengeluaran dan utang.
+
+51
+00:04:05,922 --> 00:04:09,044
+Klik Bayar pada tagihan yang sudah dibuat.
+
+52
+00:04:09,044 --> 00:04:14,769
+Pilih akun sumber, metode pembayaran, dan jumlah yang benar-benar dibayarkan.
+
+53
+00:04:14,769 --> 00:04:16,999
+Simpan untuk mengurangi utang.
+
+54
+00:04:16,999 --> 00:04:21,459
+Jangan membuat tagihan baru saat membayar tagihan yang sama.
+
+55
+00:04:21,459 --> 00:04:26,142
+Pokok dan bunga cicilan dicatat dengan jenis transaksi berbeda.
+
+56
+00:04:27,700 --> 00:04:31,739
+Jaminan kendaraan dicatat melalui Detail pemesanan.
+
+57
+00:04:31,739 --> 00:04:39,183
+Isi jenis, nomor polisi, pemilik, kondisi, kelengkapan, foto, petugas, serta waktu penerimaan.
+
+58
+00:04:39,183 --> 00:04:43,618
+Jika bukan milik penyewa, unggah persetujuan pemiliknya.
+
+59
+00:04:43,618 --> 00:04:49,716
+Uang jaminan menggunakan transaksi Uang jaminan masuk, bukan pembayaran sewa.
+
+60
+00:04:49,716 --> 00:04:53,676
+Jaminan kendaraan bukan aset atau pemasukan usaha.
+
+61
+00:04:55,200 --> 00:05:00,621
+Untuk travel per kursi, buat rute lebih dahulu, lalu tambahkan jadwal.
+
+62
+00:05:00,621 --> 00:05:07,977
+Pilih kendaraan, pengemudi, waktu keberangkatan, waktu selesai, kapasitas, dan tarif per kursi.
+
+63
+00:05:07,977 --> 00:05:13,011
+Contohnya enam kursi dengan tarif seratus lima puluh ribu rupiah.
+
+64
+00:05:13,011 --> 00:05:18,664
+Setelah jadwal disimpan, pilih Pesan kursi dan isi nama setiap penumpang.
+
+65
+00:05:18,664 --> 00:05:22,149
+Sistem mencegah penjualan melebihi kapasitas.
+
+66
+00:05:23,700 --> 00:05:26,735
+Pada daftar pemesanan, klik Ubah status.
+
+67
+00:05:26,735 --> 00:05:33,942
+Gunakan Berjalan saat kendaraan diserahkan, lalu Selesai setelah layanan benar-benar diberikan.
+
+68
+00:05:33,942 --> 00:05:40,770
+Untuk lepas kunci, dokumen harus terverifikasi dan jaminan yang diwajibkan sudah diterima.
+
+69
+00:05:40,770 --> 00:05:49,116
+Setelah selesai, periksa pelunasan, kembalikan jaminan sesuai kesepakatan, dan lengkapi bukti pengembaliannya.
+
+70
+00:05:50,700 --> 00:05:54,556
+Buka Laporan dan pilih periode yang ingin diperiksa.
+
+71
+00:05:54,556 --> 00:05:58,932
+Uang muka belum menjadi pendapatan sebelum layanan selesai.
+
+72
+00:05:58,932 --> 00:06:05,458
+Laba rugi memperhitungkan beban, bunga, dan penyusutan, sehingga berbeda dari saldo kas.
+
+73
+00:06:05,458 --> 00:06:09,240
+Periksa piutang, utang, serta keuntungan kendaraan.
+
+74
+00:06:09,240 --> 00:06:13,245
+Gunakan tombol PDF atau Excel untuk mengunduh laporan.
+
+75
+00:06:14,800 --> 00:06:20,095
+Terakhir, buka Pengaturan dan unduh cadangan database secara berkala.
+
+76
+00:06:20,095 --> 00:06:23,241
+Berkas dokumen perlu diarsipkan terpisah.
+
+77
+00:06:23,241 --> 00:06:30,608
+Periksa saldo kas dan bank setiap hari, lalu piutang, utang, servis, serta pajak secara berkala.
+
+78
+00:06:30,608 --> 00:06:35,826
+Untuk memasang di handphone, gunakan fitur Tambahkan ke layar utama.
+
+79
+00:06:35,826 --> 00:06:39,049
+Internet tetap diperlukan untuk transaksi.
+
+80
+00:06:39,049 --> 00:06:43,346
+Silakan ulangi video dan ikuti langkahnya satu per satu.
